@@ -1,5 +1,5 @@
 {
-  "name": "webpack2build",
+  "name": "build2webpack",
   "version": "1.0.0",
   "description": "webpack builder",
   "author": "hzy0913",
@@ -7,6 +7,10 @@
     "start": "webpack-dev-server --config dev.js",
     "dev": "npm start",
     "build": "node build/build.js"
+  },
+  "bin": {
+    "webpack2build-start": "dev.js",
+    "webpack2build-build": "build.js"
   },
   "repository": {
     "type": "git",

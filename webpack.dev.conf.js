@@ -6,6 +6,8 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+
 const Chalk = require('chalk')
 const open = require('open')
 const utils = require('./utils')
@@ -34,7 +36,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
+    open: false,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }
       : false,
@@ -64,6 +66,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       // both options are optional
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new FriendlyErrorsPlugin({
+      compilationSuccessInfo: {
+        messages: [`You application is running here http://localhost:${process.env.PORT}\n`],
+      }
     }),
     new ProgressBarPlugin({
       complete: Chalk.green('█'),
