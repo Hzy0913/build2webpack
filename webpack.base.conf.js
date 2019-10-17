@@ -7,7 +7,7 @@ const resolve = utils.resolve;
 
 module.exports = {
   context: process.cwd(),
-  entry: utils.cwdFile('src/app.js'),
+  entry: ['react-hot-loader/patch', utils.cwdFile('src/app.js')],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -17,7 +17,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      '~': resolve('src')
+      '~': resolve('src'),
+      'react-dom': '@hot-loader/react-dom'
     }
   },
   performance: {
