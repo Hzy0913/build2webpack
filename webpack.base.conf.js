@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require(utils.cwdFile('config'))
 
 const resolve = utils.resolve;
-console.log(resolve('src'), 3333)
+
 module.exports = {
   context: process.cwd(),
   entry: utils.cwdFile('src/app.js'),
