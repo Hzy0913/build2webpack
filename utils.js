@@ -80,7 +80,8 @@ exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
   for (const extension in loaders) {
-    const preProcessors = 'styl'
+    const preProcessors = process.env.NODE_ENV === 'development' ? config.build.preProcessorsCss :
+      config.dev.preProcessorsCss;
     if (!['css', 'postcss', preProcessors].includes(extension)) continue;
     const loader = loaders[extension]
     output.push({
