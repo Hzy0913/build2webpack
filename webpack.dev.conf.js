@@ -4,14 +4,14 @@ const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-
+const WebpackBar = require('webpackbar');
 const Chalk = require('chalk')
 const open = require('open')
 const utils = require('./utils')
 const config = require(utils.cwdFile('config'))
+const packageJson = require(utils.cwdFile('package.json'))
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -69,23 +69,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }),
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
+        clearConsole: true,
         messages: [`You application is running here http://localhost:${process.env.PORT}\n`],
       }
     }),
-    new ProgressBarPlugin({
-      complete: Chalk.green('█'),
-      incomplete: Chalk.white('█'),
-      format: '  :bar ' + Chalk.green.bold(':percent') + ' :msg',
-      clear: false,
-      callback: function () {
-        if (!config.dev.autoOpenBrowser && !ENV.FIRST_COMPILE && (ENV.npm_config_o || ENV.npm_config_open)) {
-          ENV.FIRST_COMPILE = true;
-          const {port} = devWebpackConfig.devServer;
-          open(`http://localhost:${port}`)
-        }
-      }
-    })
+    new WebpackBar({name: packageJson.name})
   ]
 })
-console.log(devWebpackConfig.module.rules)
+
 module.exports = devWebpackConfig
