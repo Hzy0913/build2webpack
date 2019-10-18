@@ -80,12 +80,13 @@ exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
   for (const extension in loaders) {
-    const preProcessors = process.env.NODE_ENV === 'development' ? config.build.preProcessorsCss :
-      config.dev.preProcessorsCss;
+    const preProcessors = process.env.NODE_ENV === 'development' ? config.dev.preProcessorsCss :
+      config.build.preProcessorsCss;
     if (!['css', 'postcss', preProcessors].includes(extension)) continue;
     const loader = loaders[extension]
+    const file = extension === 'stylus' ? 'styl' : extension;
     output.push({
-      test: new RegExp('\\.' + extension + '$'),
+      test: new RegExp('\\.' + file + '$'),
       use: loader
     })
   }
