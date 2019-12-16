@@ -1,21 +1,21 @@
-'use strict'
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const path = require('path')
-const baseWebpackConfig = require('./webpack.base.conf')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+'use strict';
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const path = require('path');
+const baseWebpackConfig = require('./webpack.base.conf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const WebpackBar = require('webpackbar');
-const Chalk = require('chalk')
-const open = require('open')
-const utils = require('./utils')
-const config = require(utils.cwdFile('config'))
-const packageJson = require(utils.cwdFile('package.json'))
+const Chalk = require('chalk');
+const open = require('open');
+const utils = require('./utils');
+const config = require(utils.cwdFile('config'));
+const packageJson = require(utils.cwdFile('package.json'));
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
-const ENV = process.env
+const HOST = process.env.HOST;
+const PORT = process.env.PORT && Number(process.env.PORT);
+const ENV = process.env;
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -43,7 +43,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     publicPath: config.dev.assetsPublicPath,
     proxy: config.dev.proxyTable,
     quiet: true,
-    stats: "errors-only",
+    stats: 'errors-only',
     watchOptions: {
       poll: config.dev.poll,
     }
@@ -73,8 +73,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         messages: [`You application is running here http://localhost:${process.env.PORT}\n`],
       }
     }),
-    new WebpackBar({name: packageJson.name})
+    new WebpackBar({ name: packageJson.name })
   ]
-})
+});
 
-module.exports = devWebpackConfig
+module.exports = devWebpackConfig;
