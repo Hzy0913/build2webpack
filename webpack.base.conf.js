@@ -1,13 +1,13 @@
-'use strict'
-const path = require('path')
-const utils = require('./utils')
-const config = require(utils.cwdFile('config'))
+'use strict';
+const path = require('path');
+const utils = require('./utils');
+const config = require(utils.cwdFile('config'));
 
 const resolve = utils.resolve;
 
 module.exports = {
   context: process.cwd(),
-  entry: ['react-hot-loader/patch', utils.cwdFile('src/app.js')],
+  entry: ['react-hot-loader/patch', utils.cwdFile('src/index.js')],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -18,7 +18,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       '~': resolve('src'),
-      'react-dom': '@hot-loader/react-dom'
+      ...(process.env.NODE_ENV === 'production' ? {} : { 'react-dom': '@hot-loader/react-dom' })
     }
   },
   performance: {
