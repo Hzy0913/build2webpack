@@ -19,6 +19,7 @@ exports.assetsPath = function (_path) {
 }
 
 exports.cssLoaders = function (options) {
+  const isDevelopment = process.env.NODE_ENV === 'development';
   options = options || {}
 
   const cssLoader = {
@@ -37,12 +38,15 @@ exports.cssLoaders = function (options) {
 
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    if (isDevelopment) {
+      loaders.unshift(styleLoader)
+    }
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
           sourceMap: options.sourceMap,
-          hmr: process.env.NODE_ENV === 'development',
+          hmr: isDevelopment,
         })
       })
     }
@@ -53,7 +57,7 @@ exports.cssLoaders = function (options) {
           options: {
             publicPath: '../',
           // only enable hot in development
-          hmr: process.env.NODE_ENV === 'development',
+          hmr: isDevelopment,
           // if hmr does not work, this is a forceful method.
           reloadAll: true,
         }
@@ -77,8 +81,8 @@ exports.cssLoaders = function (options) {
 }
 
 exports.styleLoaders = function (options) {
-  const output = []
-  const loaders = exports.cssLoaders(options)
+  const output = [];
+  const loaders = exports.cssLoaders(options);
   for (const extension in loaders) {
     const preProcessors = process.env.NODE_ENV === 'development' ? config.dev.preProcessorsCss :
       config.build.preProcessorsCss;
