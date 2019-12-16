@@ -82,11 +82,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.HashedModuleIdsPlugin(),
   ]
-})
+});
 
 if (config.build.bundleAnalyzerReport || ENV.npm_config_report || ENV.npm_config_a) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
-module.exports = webpackConfig
+module.exports = webpackConfig;
