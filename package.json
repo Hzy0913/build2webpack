@@ -70,7 +70,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.9.0",
-    "open": "^0.0.5",
+    "open": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "ora": "^4.0.2",
     "portfinder": "^1.0.13",
