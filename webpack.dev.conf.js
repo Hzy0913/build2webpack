@@ -12,6 +12,7 @@ const open = require('open');
 const utils = require('./utils');
 const config = require(utils.cwdFile('config'));
 const packageJson = require(utils.cwdFile('package.json'));
+process.env.NODE_ENV = 'development';
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);

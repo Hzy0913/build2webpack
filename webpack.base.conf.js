@@ -7,7 +7,11 @@ const resolve = utils.resolve;
 
 module.exports = {
   context: process.cwd(),
-  entry: ['react-hot-loader/patch', utils.cwdFile('src/index.js')],
+  entry: [
+    'react-hot-loader/patch',
+    process.env.NODE_ENV === 'production' ? utils.cwdFile(config.build.entry || 'src/index.js')
+      : utils.cwdFile(config.dev.entry || 'src/index.js')
+  ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

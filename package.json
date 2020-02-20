@@ -1,6 +1,6 @@
 {
   "name": "build2webpack",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "webpack builder",
   "author": "hzy0913",
   "scripts": {

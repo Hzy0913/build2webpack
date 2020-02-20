@@ -38,9 +38,7 @@ exports.cssLoaders = function (options) {
 
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
-    if (isDevelopment) {
-      loaders.unshift(styleLoader)
-    }
+
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
@@ -54,8 +52,8 @@ exports.cssLoaders = function (options) {
     if (options.extract && loader) {
       const extractLoader = {
         loader: MiniCssExtractPlugin.loader,
-          options: {
-            publicPath: '../',
+        options: {
+          publicPath: '../',
           // only enable hot in development
           hmr: isDevelopment,
           // if hmr does not work, this is a forceful method.
