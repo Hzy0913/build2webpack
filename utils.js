@@ -37,7 +37,10 @@ exports.cssLoaders = function (options) {
   }
 
   function generateLoaders (loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    let loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    const extendLoader = isDevelopment ? config.dev.extendLoader : config.build.extendLoader;
+    loaders = loaders.concat(extendLoader || [])
 
     if (loader) {
       loaders.push({
