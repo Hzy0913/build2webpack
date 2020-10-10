@@ -20,5 +20,5 @@ portfinder.getPort({port: basePort, stopPort: basePort + 1000}, (err, port) => {
   const compiler = Webpack(devWebpackConfig);
 
   const server = new WebpackDevServer(compiler, devServerOptions);
-  server.listen(port, '127.0.0.1');
+  server.listen(port, config.dev.host);
 });
