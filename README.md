@@ -18,6 +18,7 @@
 |  port |端口|
 |  proxyTable | 代码接口配置 |
 |  useEslint | 使用eslint |
+|  extendLoader | 用于扩展loader配置 |
 |  autoOpenBrowser | 自动打开浏览器 |
 |  errorOverlay | 全屏错误提示 |
 |  showEslintErrorsInOverlay | 全屏eslint错误提示 |
