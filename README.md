@@ -8,7 +8,7 @@
 |  build |转换es6代码|
 
 ## config 文件说明
-配置文件位于`config/index.js`。
+配置文件需要创建于根目录下的`config/index.js`。
 
 ### dev
 
