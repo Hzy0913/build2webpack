@@ -1,5 +1,8 @@
 ## webpack2build
 即安即用的webpack开发工具
+## Install
+     npm i build2webpack
+
 ## scripts 说明
 
 | 命令  | 说明  |
