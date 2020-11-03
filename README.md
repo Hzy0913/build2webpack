@@ -1,7 +1,7 @@
 ## webpack2build
 即安即用的webpack开发工具
 ## Install
-     npm i build2webpack
+     npm i build2webpack -D
 
 ## scripts 说明
 
