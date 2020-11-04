@@ -3,6 +3,15 @@
 ## Install
      npm i build2webpack -D
 
+## package.json scripts
+在`package.json`文件中添加如下脚本命令
+```json
+"scripts": {
+    "start": "build2webpack-start",
+    "build": "build2webpack-build",
+    "dev": "npm start"
+},
+```
 ## scripts 说明
 
 | 命令  | 说明  |
