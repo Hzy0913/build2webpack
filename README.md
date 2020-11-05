@@ -28,7 +28,7 @@
 | ------------ | ------------ |
 |  host |主机 - localhost|
 |  port |端口|
-|  proxyTable | 代码接口配置 |
+|  proxyTable | 代理转发配置 |
 |  useEslint | 使用eslint |
 |  extendLoader | 用于扩展loader配置 |
 |  autoOpenBrowser | 自动打开浏览器 |
